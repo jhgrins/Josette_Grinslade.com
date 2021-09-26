@@ -3,8 +3,6 @@ import React from "react";
 import { Button, Container, Grid, Typography } from "@material-ui/core";
 
 const Layout = () => {
-	let request = { requestType: "postRequest", payload: "Test" };
-
 	return (
 		<Container>
 			<Grid
@@ -20,8 +18,8 @@ const Layout = () => {
 					<Typography variant={"h2"}>Hello, Welcome to my Website!</Typography>
 				</Grid>
 				<Grid item>
-					<Button color={"primary"} onClick={() => sendServerRequest(request)}>
-						Don't click me
+					<Button color={"primary"} onClick={() => alert("What's Cookin Good Lookin?")}>
+						Click Me
 					</Button>
 				</Grid>
 			</Grid>
