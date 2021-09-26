@@ -1,7 +1,7 @@
 import React from "react";
 
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 import { SnackbarProvider } from "notistack";
@@ -13,7 +13,7 @@ const App = () => {
 
 	const theme = React.useMemo(
 		() =>
-			createMuiTheme({
+			createTheme({
 				palette: {
 					type: darkMode ? "dark" : "light"
 				}
