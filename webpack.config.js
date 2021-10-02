@@ -12,8 +12,7 @@ module.exports = {
 		open: true,
 		hot: true,
 		historyApiFallback: true,
-		stats: "minimal",
-		proxy: { "/api/*": "http://localhost:8080" }
+		stats: "minimal"
 	},
 	devtool: "eval-source-map",
 	module: {

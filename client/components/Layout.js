@@ -1,30 +1,132 @@
 import React from "react";
 
-import { Button, Container, Grid, Typography } from "@material-ui/core";
+import { Box, Typography, IconButton } from "@mui/material";
 
-const Layout = () => {
-	return (
-		<Container>
-			<Grid
-				container
-				direction={"column"}
-				justify={"center"}
-				alignContent={"center"}
-				alignItems={"center"}
-				spacing={2}
-				style={{ height: "100vh" }}
-			>
-				<Grid item>
-					<Typography variant={"h2"}>Hello, Welcome to my Website!</Typography>
-				</Grid>
-				<Grid item>
-					<Button color={"primary"} onClick={() => alert("What's Cookin Good Lookin?")}>
-						Click Me
-					</Button>
-				</Grid>
-			</Grid>
-		</Container>
-	);
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from '@mui/icons-material/LightMode';
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import InstagramIcon from "@mui/icons-material/Instagram";
+
+import Image from "../static/images/josette_profile_pic.jpeg";
+
+const GitHubButton = () => {
+  return (
+    <IconButton
+      href={"https://github.com/jhgrins"}
+      target={"_blank"}
+      rel={"noopener"}
+      color="secondary"
+    >
+      <GitHubIcon sx={{ fontSize: 100 }} />
+    </IconButton>
+  );
+};
+
+const LinkedInButton = () => {
+  return (
+    <IconButton
+      href={"https://www.linkedin.com/in/josette-grinslade/"}
+      target={"_blank"}
+      rel={"noopener"}
+      color="secondary"
+    >
+      <LinkedInIcon sx={{ fontSize: 100 }} />
+    </IconButton>
+  );
+};
+
+const InstagramButton = () => {
+  return (
+    <IconButton
+      href={"https://www.instagram.com/jojogrin/"}
+      target={"_blank"}
+      rel={"noopener"}
+      color="secondary"
+    >
+      <InstagramIcon sx={{ fontSize: 100 }} />
+    </IconButton>
+  );
+};
+
+const YoutubeButton = () => {
+  return (
+    <IconButton
+      href={"https://www.youtube.com/channel/UCplZPrdYG0-bXWngzPiDwgQ"}
+      target={"_blank"}
+      rel={"noopener"}
+      color="secondary"
+    >
+      <YouTubeIcon sx={{ fontSize: 100 }} />
+    </IconButton>
+  );
+};
+
+const DarkModeButton = ({ isDarkMode }) => {
+  return isDarkMode ? <LightModeIcon /> : <DarkModeIcon />;
+};
+
+const Layout = (props) => {
+  return (
+    <Box>
+      <Box
+        display={"flex"}
+        justifyContent={"center"}
+        alignItems={"flex-end"}
+        sx={{ height: "65vh", width: "100vw", bgcolor: "primary.main" }}
+        p={1}
+      >
+        <Box width={500}>
+          <Typography
+            align={"right"}
+            fontFamily={"cookie"}
+            sx={{ fontSize: 140, color: "text.primary" }}
+          >
+            Josette
+          </Typography>
+        </Box>
+        <Box pl={4} pr={4}>
+          <img
+            className={"circular--square"}
+            src={Image}
+            alt={"Josette"}
+            style={{ width: 350 }}
+          />
+        </Box>
+        <Box width={500}>
+          <Typography
+            align={"left"}
+            fontFamily={"cookie"}
+            sx={{ fontSize: 140, color: "text.primary" }}
+          >
+            Grinslade
+          </Typography>
+        </Box>
+        <Box alignSelf={"flex-start"} pr={2} pt={1}>
+          <IconButton
+            color="secondary"
+            size="large"
+            onClick={() => props.setDarkMode(!props.darkMode)}
+          >
+            <DarkModeButton isDarkMode={props.darkMode} />
+          </IconButton>
+        </Box>
+      </Box>
+      <Box
+        display={"flex"}
+        justifyContent={"center"}
+        sx={{ width: "100vw" }}
+        pt={2}
+        pr={7}
+      >
+        <GitHubButton />
+        <LinkedInButton />
+        <InstagramButton />
+        <YoutubeButton />
+      </Box>
+    </Box>
+  );
 };
 
 export default Layout;
