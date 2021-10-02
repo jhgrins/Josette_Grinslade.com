@@ -117,7 +117,7 @@ const Layout = (props) => {
         display={"flex"}
         justifyContent={"center"}
         sx={{ width: "100vw" }}
-        pt={2}
+        pt={5}
         pr={7}
       >
         <GitHubButton />
