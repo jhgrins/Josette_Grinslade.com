@@ -1,129 +1,151 @@
 import React from "react";
 
 import { Box, Typography, IconButton } from "@mui/material";
+import { makeStyles } from '@mui/styles';
+import { DarkMode, LightMode, GitHub, LinkedIn, YouTube, Instagram } from "@mui/icons-material";
 
-import DarkModeIcon from "@mui/icons-material/DarkMode";
-import LightModeIcon from '@mui/icons-material/LightMode';
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import YouTubeIcon from "@mui/icons-material/YouTube";
-import InstagramIcon from "@mui/icons-material/Instagram";
+import ProfileImage from "../static/images/josette_profile_pic.jpeg";
 
-import Image from "../static/images/josette_profile_pic.jpeg";
+const useStyles = makeStyles((theme) => {
+  console.log(theme.palette.primary.main); return ({
+    nameBox: {
+      [theme.breakpoints.down('md')]: {
+        flexDirection: "column",
+        alignItems: "center",
+        height: "80vh",
+      },
+      [theme.breakpoints.up('md')]: {
+        alignItems: "flex-end",
+        paddingBottom: 6,
+        height: "65vh",
+      },
+      justifyContent: "center",
+      display: "flex",
 
-const GitHubButton = () => {
+      width: "100vw",
+      backgroundColor: theme.palette.primary.main
+    },
+    textBox: {
+      [theme.breakpoints.down('md')]: {
+        width: 250,
+      },
+      [theme.breakpoints.up('md')]: {
+        width: 500,
+      },
+    },
+    josetteText: {
+      [theme.breakpoints.down('md')]: {
+        textAlign: "center",
+        fontSize: 80,
+        flexDirection: "column"
+
+      },
+      [theme.breakpoints.up('md')]: {
+        textAlign: "right",
+        fontSize: 170,
+        flexDirection: "row"
+      },
+      color: "text.primary",
+      fontFamily: "cookie",
+    },
+    grinsladeText: {
+      [theme.breakpoints.down('md')]: {
+        textAlign: "center",
+        fontSize: 80,
+        flexDirection: "column"
+      },
+      [theme.breakpoints.up('md')]: {
+        textAlign: "left",
+        fontSize: 170,
+        flexDirection: "row"
+      },
+      color: "text.primary",
+      fontFamily: "cookie",
+    },
+    profileBox: {
+      [theme.breakpoints.down('md')]: {
+        padding: theme.spacing(1),
+      },
+      [theme.breakpoints.up('md')]: {
+        padding: theme.spacing(4),
+      },
+    },
+    profilePic: {
+      [theme.breakpoints.down('md')]: {
+        width: 200,
+      },
+      [theme.breakpoints.up('md')]: {
+        width: 400,
+      },
+      borderRadius: "50%"
+    },
+  })
+});
+
+const SocialButton = ({ Icon, href }) => {
   return (
     <IconButton
-      href={"https://github.com/jhgrins"}
+      href={href}
       target={"_blank"}
       rel={"noopener"}
       color="secondary"
     >
-      <GitHubIcon sx={{ fontSize: 100 }} />
-    </IconButton>
-  );
-};
-
-const LinkedInButton = () => {
-  return (
-    <IconButton
-      href={"https://www.linkedin.com/in/josette-grinslade/"}
-      target={"_blank"}
-      rel={"noopener"}
-      color="secondary"
-    >
-      <LinkedInIcon sx={{ fontSize: 100 }} />
-    </IconButton>
-  );
-};
-
-const InstagramButton = () => {
-  return (
-    <IconButton
-      href={"https://www.instagram.com/jojogrin/"}
-      target={"_blank"}
-      rel={"noopener"}
-      color="secondary"
-    >
-      <InstagramIcon sx={{ fontSize: 100 }} />
-    </IconButton>
-  );
-};
-
-const YoutubeButton = () => {
-  return (
-    <IconButton
-      href={"https://www.youtube.com/channel/UCplZPrdYG0-bXWngzPiDwgQ"}
-      target={"_blank"}
-      rel={"noopener"}
-      color="secondary"
-    >
-      <YouTubeIcon sx={{ fontSize: 100 }} />
+      <Icon sx={{ fontSize: 60 }} />
     </IconButton>
   );
 };
 
 const DarkModeButton = ({ isDarkMode }) => {
-  return isDarkMode ? <LightModeIcon /> : <DarkModeIcon />;
+  return isDarkMode ? <LightMode sx={{ fontSize: 30 }} /> : <DarkMode sx={{ fontSize: 30 }} />;
 };
 
 const Layout = (props) => {
+  const classes = useStyles();
+
   return (
     <Box>
-      <Box
-        display={"flex"}
-        justifyContent={"center"}
-        alignItems={"flex-end"}
-        sx={{ height: "65vh", width: "100vw", bgcolor: "primary.main" }}
-        p={1}
-      >
-        <Box width={500}>
+      <Box className={classes.nameBox}>
+        <Box className={classes.textBox}>
           <Typography
-            align={"right"}
-            fontFamily={"cookie"}
-            sx={{ fontSize: 140, color: "text.primary" }}
+            className={classes.josetteText}
           >
             Josette
           </Typography>
         </Box>
-        <Box pl={4} pr={4}>
+        <Box className={classes.profileBox}>
           <img
-            className={"circular--square"}
-            src={Image}
+            className={classes.profilePic}
+            src={ProfileImage}
             alt={"Josette"}
-            style={{ width: 350 }}
           />
         </Box>
-        <Box width={500}>
+        <Box className={classes.textBox}>
           <Typography
-            align={"left"}
-            fontFamily={"cookie"}
-            sx={{ fontSize: 140, color: "text.primary" }}
+            className={classes.grinsladeText}
           >
             Grinslade
           </Typography>
         </Box>
-        <Box alignSelf={"flex-start"} pr={2} pt={1}>
-          <IconButton
-            color="secondary"
-            size="large"
-            onClick={() => props.setDarkMode(!props.darkMode)}
-          >
-            <DarkModeButton isDarkMode={props.darkMode} />
-          </IconButton>
-        </Box>
+
       </Box>
       <Box
         display={"flex"}
         justifyContent={"center"}
         sx={{ width: "100vw" }}
         pt={5}
-        pr={7}
       >
-        <GitHubButton />
-        <LinkedInButton />
-        <InstagramButton />
-        <YoutubeButton />
+        <SocialButton Icon={GitHub} href={"https://github.com/jhgrins"} />
+        <SocialButton Icon={LinkedIn} href={"https://www.linkedin.com/in/josette-grinslade/"} />
+        <SocialButton Icon={Instagram} href={"https://www.instagram.com/jojogrin/"} />
+        <SocialButton Icon={YouTube} href={"https://www.youtube.com/channel/UCplZPrdYG0-bXWngzPiDwgQ"} />
+      </Box>
+      <Box position={"absolute"} top={20} right={20}>
+        <IconButton
+          color="secondary"
+          onClick={() => props.setDarkMode(!props.darkMode)}
+        >
+          <DarkModeButton isDarkMode={props.darkMode} />
+        </IconButton>
       </Box>
     </Box>
   );
