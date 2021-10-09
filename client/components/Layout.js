@@ -7,21 +7,19 @@ import { DarkMode, LightMode, GitHub, LinkedIn, YouTube, Instagram } from "@mui/
 import ProfileImage from "../static/images/josette_profile_pic.jpeg";
 
 const useStyles = makeStyles((theme) => {
-  console.log(theme.palette.primary.main); return ({
+  return ({
     nameBox: {
       [theme.breakpoints.down('md')]: {
         flexDirection: "column",
         alignItems: "center",
-        height: "80vh",
       },
       [theme.breakpoints.up('md')]: {
         alignItems: "flex-end",
         paddingBottom: 6,
-        height: "65vh",
       },
       justifyContent: "center",
       display: "flex",
-
+      height: "65vh",
       width: "100vw",
       backgroundColor: theme.palette.primary.main
     },
