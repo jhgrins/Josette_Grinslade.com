@@ -20,28 +20,28 @@ const App = (props) => {
 					mode: darkMode ? "dark" : "light",
 					...(darkMode
 						? {
-								primary: { main: "#343531" },
-								secondary: { main: "#c8deba" },
-								background: {
-									// default: "#593f5d"
-									default: "#725d75"
-								},
-								text: {
-									primary: "#FFFFFF",
-									secondary: blueGrey[500]
-								}
-						  }
+							primary: { main: "#343531" },
+							secondary: { main: "#c8deba" },
+							background: {
+								// default: "#593f5d"
+								default: "#725d75"
+							},
+							text: {
+								primary: "#FFFFFF",
+								secondary: blueGrey[500]
+							}
+						}
 						: {
-								primary: { main: "#b59ac8" },
-								secondary: { main: "#415036" },
-								background: {
-									default: "#f0f7f2"
-								},
-								text: {
-									primary: "#393939",
-									secondary: lightGreen[800]
-								}
-						  })
+							primary: { main: "#b59ac8" },
+							secondary: { main: "#415036" },
+							background: {
+								default: "#f0f7f2"
+							},
+							text: {
+								primary: "#393939",
+								secondary: lightGreen[800]
+							}
+						})
 				}
 			}),
 		[darkMode]

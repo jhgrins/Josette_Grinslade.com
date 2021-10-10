@@ -4,108 +4,72 @@ import { Box, Typography, IconButton } from "@mui/material";
 import { makeStyles } from '@mui/styles';
 import { DarkMode, LightMode, GitHub, LinkedIn, YouTube, Instagram } from "@mui/icons-material";
 
+import clsx from "clsx";
+
 import ProfileImage from "../static/images/josette_profile_pic.jpeg";
 
 const useStyles = makeStyles((theme) => {
   return ({
     nameBox: {
-      [theme.breakpoints.down('md')]: {
+      [theme.breakpoints.up('xs')]: {
         flexDirection: "column",
         alignItems: "center",
       },
       [theme.breakpoints.up('md')]: {
+        flexDirection: "row",
         alignItems: "flex-end",
         paddingBottom: 6,
       },
-      justifyContent: "center",
       display: "flex",
+      justifyContent: "center",
       height: "65vh",
       width: "100vw",
       backgroundColor: theme.palette.primary.main
     },
     textBox: {
-      [theme.breakpoints.down('md')]: {
-        width: 250,
-      },
-      [theme.breakpoints.up('md')]: {
-        width: 500,
-      },
+      [theme.breakpoints.up('xs')]: { width: 250 },
+      [theme.breakpoints.up('md')]: { width: 300 },
+      [theme.breakpoints.up('lg')]: { width: 400 },
+      [theme.breakpoints.up('xl')]: { width: 500 },
+    },
+    nameText: {
+      [theme.breakpoints.up('xs')]: { fontSize: 75, textAlign: "center" },
+      [theme.breakpoints.up('sm')]: { fontSize: 80 },
+      [theme.breakpoints.up('md')]: { fontSize: 90 },
+      [theme.breakpoints.up('lg')]: { fontSize: 120 },
+      [theme.breakpoints.up('xl')]: { fontSize: 150 },
+      color: "text.primary",
+      fontFamily: "cookie",
     },
     josetteText: {
-      [theme.breakpoints.down('md')]: {
-        textAlign: "center",
-        fontSize: 80,
-        flexDirection: "column"
-
-      },
-      [theme.breakpoints.up('md')]: {
-        textAlign: "right",
-        fontSize: 170,
-        flexDirection: "row"
-      },
-      color: "text.primary",
-      fontFamily: "cookie",
+      [theme.breakpoints.up('md')]: { textAlign: "right" }
     },
     grinsladeText: {
-      [theme.breakpoints.down('md')]: {
-        textAlign: "center",
-        fontSize: 80,
-        flexDirection: "column"
-      },
-      [theme.breakpoints.up('md')]: {
-        textAlign: "left",
-        fontSize: 170,
-        flexDirection: "row"
-      },
-      color: "text.primary",
-      fontFamily: "cookie",
+      [theme.breakpoints.up('md')]: { textAlign: "left" }
     },
     profileBox: {
-      [theme.breakpoints.down('md')]: {
-        padding: theme.spacing(1),
-      },
-      [theme.breakpoints.up('md')]: {
-        padding: theme.spacing(4),
-      },
+      [theme.breakpoints.up('xs')]: { padding: theme.spacing(1) },
+      [theme.breakpoints.up('md')]: { padding: theme.spacing(4) },
     },
     profilePic: {
-      [theme.breakpoints.down('md')]: {
-        width: 200,
-      },
-      [theme.breakpoints.up('md')]: {
-        width: 400,
-      },
+      [theme.breakpoints.up('xs')]: { width: 150 },
+      [theme.breakpoints.up('sm')]: { width: 200 },
+      [theme.breakpoints.up('md')]: { width: 300 },
+      [theme.breakpoints.up('lg')]: { width: 400 },
+      [theme.breakpoints.up('xl')]: { width: 500 },
       borderRadius: "50%"
     },
   })
 });
 
-const SocialButton = ({ Icon, href }) => {
-  return (
-    <IconButton
-      href={href}
-      target={"_blank"}
-      rel={"noopener"}
-      color="secondary"
-    >
-      <Icon sx={{ fontSize: 60 }} />
-    </IconButton>
-  );
-};
-
-const DarkModeButton = ({ isDarkMode }) => {
-  return isDarkMode ? <LightMode sx={{ fontSize: 30 }} /> : <DarkMode sx={{ fontSize: 30 }} />;
-};
-
 const Layout = (props) => {
   const classes = useStyles();
-
   return (
     <Box>
       <Box className={classes.nameBox}>
         <Box className={classes.textBox}>
           <Typography
-            className={classes.josetteText}
+            className={clsx(classes.nameText, classes.josetteText)}
           >
             Josette
           </Typography>
@@ -119,7 +83,7 @@ const Layout = (props) => {
         </Box>
         <Box className={classes.textBox}>
           <Typography
-            className={classes.grinsladeText}
+            className={clsx(classes.nameText, classes.grinsladeText)}
           >
             Grinslade
           </Typography>
@@ -142,10 +106,23 @@ const Layout = (props) => {
           color="secondary"
           onClick={() => props.setDarkMode(!props.darkMode)}
         >
-          <DarkModeButton isDarkMode={props.darkMode} />
+          {props.darkMode ? <DarkMode sx={{ fontSize: 30 }} /> : <LightMode sx={{ fontSize: 30 }} />}
         </IconButton>
       </Box>
     </Box>
+  );
+};
+
+const SocialButton = ({ Icon, href }) => {
+  return (
+    <IconButton
+      href={href}
+      target={"_blank"}
+      rel={"noopener"}
+      color="secondary"
+    >
+      <Icon sx={{ fontSize: 60 }} />
+    </IconButton>
   );
 };
 
