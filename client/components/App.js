@@ -23,7 +23,6 @@ const App = (props) => {
 							primary: { main: "#343531" },
 							secondary: { main: "#c8deba" },
 							background: {
-								// default: "#593f5d"
 								default: "#725d75"
 							},
 							text: {
@@ -32,7 +31,8 @@ const App = (props) => {
 							}
 						}
 						: {
-							primary: { main: "#b59ac8" },
+							// primary: { main: "#b59ac8" },
+							primary: {main: "#af9bbd"},
 							secondary: { main: "#415036" },
 							background: {
 								default: "#f0f7f2"
