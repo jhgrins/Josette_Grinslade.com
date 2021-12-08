@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => {
 			[theme.breakpoints.up("xs")]: {
 				flexDirection: "column",
 				alignItems: "center",
-				height: "55vh"
+				height: "40vh"
 			},
 			[theme.breakpoints.up("md")]: {
 				flexDirection: "row",
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => {
 			display: "flex",
 			justifyContent: "center",
 			height: "65vh",
-			minHeight: "500px",
+			minHeight: "400px",
 			width: "100vw",
 			backgroundColor: theme.palette.primary.main
 		},
