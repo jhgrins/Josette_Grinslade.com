@@ -1,19 +1,23 @@
 import React from "react";
+import cat from "../static/images/cute_cat.gif";
 
-import { Box, Typography, IconButton } from "@mui/material";
+import { Box, Typography, IconButton, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { DarkMode, LightMode, GitHub, LinkedIn, YouTube, Instagram } from "@mui/icons-material";
+import ButtonUnstyled from "@mui/base/ButtonUnstyled";
 
 import clsx from "clsx";
 
 import ProfileImage from "../static/images/josette_profile_pic.jpeg";
+import { height } from "@mui/system";
 
 const useStyles = makeStyles((theme) => {
 	return {
 		nameBox: {
 			[theme.breakpoints.up("xs")]: {
 				flexDirection: "column",
-				alignItems: "center"
+				alignItems: "center",
+				height: "55vh"
 			},
 			[theme.breakpoints.up("md")]: {
 				flexDirection: "row",
@@ -23,6 +27,7 @@ const useStyles = makeStyles((theme) => {
 			display: "flex",
 			justifyContent: "center",
 			height: "65vh",
+			minHeight: "500px",
 			width: "100vw",
 			backgroundColor: theme.palette.primary.main
 		},
@@ -59,21 +64,28 @@ const useStyles = makeStyles((theme) => {
 			[theme.breakpoints.up("xl")]: { width: 500 },
 			borderRadius: "50%"
 		},
-    bioText: {
-			[theme.breakpoints.up("xs")]: { fontSize: 40, textAlign: "center" },
-			[theme.breakpoints.up("sm")]: { fontSize: 50 },
-			[theme.breakpoints.up("md")]: { fontSize: 60 },
-			[theme.breakpoints.up("lg")]: { fontSize: 70 },
-			[theme.breakpoints.up("xl")]: { fontSize: 80 },
-      paragraph: true,
-			color: "text.primary",
-			fontFamily: "dongle"
+		bioText: {
+			[theme.breakpoints.up("xs")]: { fontSize: 30, textAlign: "center" },
+			[theme.breakpoints.up("sm")]: { fontSize: 30 },
+			[theme.breakpoints.up("md")]: { fontSize: 40 },
+			[theme.breakpoints.up("lg")]: { fontSize: 50 },
+			[theme.breakpoints.up("xl")]: { fontSize: 65 },
+
+			fontFamily: "dongle",
+			paddingLeft: theme.spacing(4),
+			paddingRight: theme.spacing(4),
+			
 		},
+		cat : {
+			marginTop: theme.spacing(-4),
+			marginLeft: theme.spacing(-4)
+		}
 	};
 });
 
 const Layout = (props) => {
 	const classes = useStyles();
+	const [showCat, setShowCat] = React.useState(false);
 	return (
 		<Box>
 			<Box className={classes.nameBox}>
@@ -91,7 +103,14 @@ const Layout = (props) => {
 					</Typography>
 				</Box>
 			</Box>
-			<Box display={"flex"} flexDirection={"column"} alignItems={"center"} justifyContent={"space-between"} sx={{ width: "100vw" }} pt={5}>
+			<Box
+				display={"flex"}
+				flexDirection={"column"}
+				alignItems={"center"}
+				justifyContent={"space-between"}
+				sx={{ width: "100vw" }}
+				pt={5}
+			>
 				<Box>
 					<SocialButton Icon={GitHub} href={"https://github.com/jhgrins"} />
 					<SocialButton Icon={LinkedIn} href={"https://www.linkedin.com/in/jhgrins/"} />
@@ -105,11 +124,17 @@ const Layout = (props) => {
 					/>
 				</Box>
 				<Box>
-					<Typography className={clsx(classes.bioText)} sx={{mt:4}}>
-						I'm a software engineer passionate about digital creation, crafts and cats!
-					</Typography>
+
+					<div className={clsx(classes.bioText)} sx={{ mt: 4 }}>
+						I'm a software engineer passionate about games, crafts, and{" "}
+						<a variant="text" onClick={() => setShowCat(!showCat)}>
+							cats!
+						</a>
+					</div>
 				</Box>
+				{showCat && <img src={cat} alt="cute cat" height={100} className={clsx(classes.cat)}/>}
 			</Box>
+			
 			<Box position={"absolute"} top={20} right={20}>
 				<IconButton color="secondary" onClick={() => props.setDarkMode(!props.darkMode)}>
 					{props.darkMode ? (
