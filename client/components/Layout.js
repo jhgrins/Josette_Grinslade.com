@@ -22,11 +22,11 @@ const useStyles = makeStyles((theme) => {
 			[theme.breakpoints.up("md")]: {
 				flexDirection: "row",
 				alignItems: "flex-end",
-				paddingBottom: 6
+				paddingBottom: 6,
+				height: "65vh",
 			},
 			display: "flex",
 			justifyContent: "center",
-			height: "65vh",
 			minHeight: "400px",
 			width: "100vw",
 			backgroundColor: theme.palette.primary.main
