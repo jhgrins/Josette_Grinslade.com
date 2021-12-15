@@ -138,9 +138,9 @@ const Layout = (props) => {
 			<Box position={"absolute"} top={20} right={20}>
 				<IconButton color="secondary" onClick={() => props.setDarkMode(!props.darkMode)}>
 					{props.darkMode ? (
-						<DarkMode sx={{ fontSize: 30 }} />
-					) : (
 						<LightMode sx={{ fontSize: 30 }} />
+					) : (
+						<DarkMode sx={{ fontSize: 30 }} />
 					)}
 				</IconButton>
 			</Box>
